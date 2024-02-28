@@ -20,7 +20,7 @@ const fileStorage = multer.diskStorage({
 });
 
 app.use(bodyParser.json());
-app.use(multer({ storage: fileStorage }).single("audio"));
+// app.use(multer({ storage: fileStorage }).single("audio"));
 
 app.use("/grievance", grievanceRoutes);
 app.use("/audios", express.static(path.join(__dirname, "audios")));

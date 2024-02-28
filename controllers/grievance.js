@@ -31,7 +31,7 @@ exports.postGrievance = (req, res, next) => {
   }
 
 
-  const audio = req.body.audio || "";
+  // const audio = req.body.audio || "";6
   const transcript = req.body.transcript || "";
   const subjectContentText = req.body.subjectContentText || "";
   const code = req.body.code ? +req.body.code : 0;
