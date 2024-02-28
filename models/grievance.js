@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 
+const Comment = require("./comment");
+
 const grievanceSchema = new mongoose.Schema(
   {
     audioUrl: { type: String },
@@ -9,6 +11,7 @@ const grievanceSchema = new mongoose.Schema(
     categoryName: { type: String },
     label: { type: String },
     status: { type: String },
+    comments: [Comment.schema]
   },
   { timestamps: true }
 );
