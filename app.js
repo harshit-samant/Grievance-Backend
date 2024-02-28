@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 
 const grievanceRoutes = require("./routes/grievance");
 
@@ -22,6 +23,7 @@ app.use(bodyParser.json());
 app.use(multer({ storage: fileStorage }).single("audio"));
 
 app.use("/grievance", grievanceRoutes);
+app.use("/audios", express.static(path.join(__dirname, "audios")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -48,7 +50,7 @@ mongoose
   )
   .then((result) => {
     app.listen(port, () => {
-      console.log(`Server started at port ${port}`);
+      console.log(`Server running at port ${port}`);
     });
   })
   .catch((err) => console.log(err));
