@@ -65,3 +65,33 @@ exports.postGrievance = (req, res, next) => {
       next(err);
     });
 };
+
+exports.updateStatus = (req, res, next) => {
+  const postId = req.params.grievanceId;
+  
+  const status = req.body.status;
+  
+  Grievance.findById(postId)
+    .then((result) => {
+      // console.log(post);
+      if (!result) {
+        const error = new Error("Could not find post.");
+        error.statusCode = 404;
+        throw error;
+      }
+    
+      result.status = status;
+
+      return result.save();
+    })
+    .then((result) => {
+      res.status(200).json({ message: "Status updated!", status: result.status });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
