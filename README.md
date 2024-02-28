@@ -25,3 +25,11 @@ status: (String) - The status of the grievance.
 
 Response Example:
 { "_id": "Unique Id", "status": "Open", "message": "Grievance added successfully", "audioUrl": "/audios/unique_grievance_id", "createdDate": "2024-02-25T12:00:00Z", "updatedDate": "2024-02-25T12:00:00Z", "transcript": "Example transcript", "subjectContentText": "Example subject content", "code": 123, "categoryName": "ExampleCategory", "label": "ExampleLabel", }
+
+
+EndPoint
+1. Get Grievance
+Endpoint URL
+GET /grievance/check-status/:grievanceId
+
+
