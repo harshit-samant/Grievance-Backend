@@ -10,20 +10,20 @@ const grievanceRoutes = require("./routes/grievance");
 const app = express();
 const port = 8080;
 
-const fileStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "audios");
-  },
-  filename: (req, file, cb) => {
-    cb(null, uuidv4() + ".mp3");
-  },
-});
+// const fileStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "audios");
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, uuidv4() + ".mp3");
+//   },
+// });
 
 app.use(bodyParser.json());
 // app.use(multer({ storage: fileStorage }).single("audio"));
 
 app.use("/grievance", grievanceRoutes);
-app.use("/audios", express.static(path.join(__dirname, "audios")));
+// app.use("/audios", express.static(path.join(__dirname, "audios")));
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
