@@ -6,5 +6,6 @@ const router = express.Router();
 
 router.get('/check-status/:grievanceId', grievanceController.getGrievance);
 router.post('/post', grievanceController.postGrievance);
+router.put('/update-status/:grievanceId', grievanceController.updateStatus);
 
 module.exports = router;
