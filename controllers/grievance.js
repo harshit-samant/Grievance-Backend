@@ -30,7 +30,8 @@ exports.postGrievance = (req, res, next) => {
     throw error;
   }
 
-  const audioUrl = req.file.path.replace("\\", "/");
+
+  const audio = req.body.audio || "";
   const transcript = req.body.transcript || "";
   const subjectContentText = req.body.subjectContentText || "";
   const code = req.body.code ? +req.body.code : 0;
@@ -40,7 +41,7 @@ exports.postGrievance = (req, res, next) => {
 
   // Create grievance in db
   const greivance = new Grievance({
-    audioUrl,
+    audio,
     transcript,
     subjectContentText,
     code,
