@@ -4,7 +4,7 @@ const Comment = require("./comment");
 
 const grievanceSchema = new mongoose.Schema(
   {
-    audioUrl: { type: String},
+    audio: { type: String},
     transcript: { type: String },
     subjectContentText: { type: String },
     code: { type: Number },
