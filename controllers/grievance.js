@@ -24,13 +24,13 @@ exports.getGrievance = (req, res, next) => {
 };
 
 exports.postGrievance = (req, res, next) => {
-  if (!req.file) {
-    const error = new Error("No audio file provided.");
-    error.statusCode = 422;
-    throw error;
-  }
+  // if (!req.file) {
+  //   const error = new Error("No audio file provided.");
+  //   error.statusCode = 422;
+  //   throw error;
+  // }
 
-  
+
   const audio = req.body.audio || "";
   const transcript = req.body.transcript || "";
   const subjectContentText = req.body.subjectContentText || "";
