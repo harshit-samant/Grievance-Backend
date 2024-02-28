@@ -30,8 +30,8 @@ exports.postGrievance = (req, res, next) => {
     throw error;
   }
 
-
-  // const audio = req.body.audio || "";6
+  
+  const audio = req.body.audio || "";
   const transcript = req.body.transcript || "";
   const subjectContentText = req.body.subjectContentText || "";
   const code = req.body.code ? +req.body.code : 0;
