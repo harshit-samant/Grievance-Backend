@@ -65,6 +65,54 @@ exports.postGrievance = (req, res, next) => {
       next(err);
     });
 };
+exports.getAllGrievances = (req, res, next) => {
+  Grievance.find()
+    .then((grievances) => {
+      res.status(200).json({
+        message: "Grievances fetched.",
+        grievances: grievances,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
+exports.getAllGrievancesbyCategoryName = (req, res, next) => {
+  const categoryName = req.params.categoryName;
+  Grievance.find({ categoryName: categoryName })
+    .then((grievances) => {
+      res.status(200).json({
+        message: "Grievances fetched.",
+        grievances: grievances,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+}
+exports.getAllGrievancesbyStatus = (req, res, next) => {
+  const status = req.params.status;
+  Grievance.find({ status: status })
+    .then((grievances) => {
+      res.status(200).json({
+        message: "Grievances fetched.",
+        grievances: grievances,
+      });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+}
 
 exports.updateStatus = (req, res, next) => {
   const postId = req.params.grievanceId;
