@@ -1,5 +1,26 @@
 const Grievance = require("../models/grievance");
 
+exports.getGrievances = (req, res, next) => {
+  Grievance.find()
+    .then((grievances) => {
+      if (!grievances) {
+        const error = new Error("Could not find grievance.");
+        error.statusCode = 404;
+        throw error;
+      }
+
+      res
+        .status(200)
+        .json({ message: "Fetched grievances successfully.", grievances: grievances });
+    })
+    .catch((err) => {
+      if (!err.statusCode) {
+        err.statusCode = 500;
+      }
+      next(err);
+    });
+};
+
 exports.getGrievance = (req, res, next) => {
   const grievanceId = req.params.grievanceId;
 
